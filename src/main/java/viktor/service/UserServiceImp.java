@@ -12,7 +12,7 @@ import java.util.List;
 @Transactional
 public class UserServiceImp implements UserService {
 
-    UserDao userDao;
+    private final UserDao userDao;
 
     @Autowired
     public UserServiceImp(UserDao userDao) {
@@ -25,7 +25,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User findById(int id) {
+    public User findById(long id) {
         return userDao.findById(id);
     }
 
@@ -35,12 +35,13 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void update(int id, User user) {
+    public void update(long id, User user) {
         userDao.update(id, user);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         userDao.delete(id);
     }
+
 }

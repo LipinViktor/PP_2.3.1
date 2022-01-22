@@ -27,7 +27,7 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @ComponentScan("viktor")
-@PropertySource("classpath:db.properties")
+@PropertySource("classpath:viktor.properties")
 @EnableTransactionManagement
 public class WebConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
@@ -63,10 +63,12 @@ public class WebConfig implements WebMvcConfigurer {
         registry.viewResolver(resolver);
     }
 
-    private Properties hibernateProperties() {
+    @Bean
+    public Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
+        properties.setProperty("hibernate.hbm2ddl.auto", "create");
         return properties;
     }
 

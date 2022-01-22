@@ -8,6 +8,8 @@ import viktor.dao.UserDao;
 import viktor.model.User;
 import viktor.service.UserService;
 
+import javax.annotation.PostConstruct;
+
 
 @Controller
 @RequestMapping("/users")
@@ -18,6 +20,12 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @PostConstruct
+    public void postCon() {
+        userService.save(new User("Ivan", "Ivanov", 25));
+        userService.save(new User("Petr", "Petrov", 18));
     }
 
     @GetMapping()

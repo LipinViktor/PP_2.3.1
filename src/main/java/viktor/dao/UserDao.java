@@ -7,11 +7,12 @@ import java.util.List;
 public interface UserDao {
     List<User> findAll();
 
-    User findById(int id);
+    User findById(long id);
 
     void save(User user);
 
-    void update(int id, User user);
+    void update(long id, User user);
 
-    void delete(int id);
+    void delete(long id);
+
 }

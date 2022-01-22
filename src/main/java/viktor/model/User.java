@@ -1,20 +1,16 @@
 package viktor.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
-    @Column(name = "ID")
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "NAME")
+    private Long id;
     private String name;
-    @Column(name = "SURNAME")
     private String surName;
-    @Column(name = "AGE")
     private int age;
 
     public User() {}
@@ -25,11 +21,11 @@ public class User {
         this.age = age;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,13 +53,4 @@ public class User {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "User{ " +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }
